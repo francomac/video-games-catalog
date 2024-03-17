@@ -17,7 +17,7 @@ module.exports = {
 			'warn',
 			{ allowConstantExport: true },
 		],
-		eqeqeq: 'warn',
+		eqeqeq: 'error',
 		'no-console': 'warn',
 		'no-unused-vars': [
 			'error',
@@ -29,29 +29,3 @@ module.exports = {
 		],
 	},
 };
-
-// module.exports = {
-//   root: true,
-//   env: { browser: true, es2020: true },
-
-//   ignorePatterns: ["dist", ".eslintrc.cjs"],
-//   parserOptions: { ecmaVersion: "latest", sourceType: "module" },
-//   settings: { react: { version: "18.2" } },
-//   plugins: ["react-refresh"],
-//   rules: {
-//     "react-refresh/only-export-components": [
-//       "warn",
-//       { allowConstantExport: true },
-//     ],
-//     eqeqeq: "warn",
-//     "no-console": "warn",
-//     "no-unused-vars": [
-//       "error",
-//       {
-//         argsIgnorePattern: "^_",
-//         varsIgnorePattern: "^_",
-//         caughtErrorsIgnorePattern: "^_",
-//       },
-//     ],
-//   },
-// };
