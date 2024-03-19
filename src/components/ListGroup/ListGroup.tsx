@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './ListGroup.module.scss';
 
 interface Props {
 	items: string[];
@@ -18,7 +19,12 @@ function ListGroup({
 			<h1>{heading}</h1>
 			<div className='d-flex flex-row flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center'>
 				{items.length === 0 && <p>No item found</p>}
-				<ul className='list-group'>
+				<ul
+					className={[
+						styles.listGroup,
+						styles.container,
+					].join(' ')}
+				>
 					{items.map((item, index) => (
 						<li
 							key={index}
