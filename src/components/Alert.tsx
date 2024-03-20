@@ -3,15 +3,11 @@ import { ReactNode } from 'react';
 interface Props {
 	children?: ReactNode;
 	text: string;
+	showAlert?: string;
 	onClose: () => void;
 }
 
-const Alert = ({
-	children,
-	text,
-	onClick,
-	showAlert = 'fade show',
-}: Props) => {
+const Alert = ({ text, onClose }: Props) => {
 	return (
 		<>
 			<div

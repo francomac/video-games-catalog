@@ -21,7 +21,6 @@ const ExpandableText = ({ text, maxChars = 50 }: Props) => {
 				<div>{text.substring(0, maxChars)}</div>
 			)}
 			<Button
-				className='mx-2'
 				text={showMore ? 'Show less' : 'Show more'}
 				typeColor='secondary'
 				onClick={onTextCutOff}

@@ -1,18 +1,18 @@
 interface Props {
 	text: string;
-	typeColor?: 'primary';
+	typeColor?: 'primary' | 'secondary';
 	onClick: () => void;
 }
 
 const Button = ({
 	text,
-	typeColor = 'btn-primary',
+	typeColor = 'primary',
 	onClick,
 }: Props) => {
 	return (
 		<button
 			type='button'
-			className={`btn btn-${typeColor}`}
+			className={`mx-2 btn btn-${typeColor}`}
 			onClick={onClick}
 		>
 			{text}

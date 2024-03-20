@@ -1,12 +1,12 @@
 import Alert from '@/components/Alert.tsx';
 import Button from '@/components/Button.tsx';
 import ExpandableText from '@/components/ExpandableText.tsx';
+import FormUseRef from '@/components/FormUseRef';
 import Like from '@/components/Like.tsx';
 import ListGroup from '@/components/ListGroup';
 import Message from '@/components/Message.tsx';
 import { useState } from 'react';
 import { BsFillCalendarFill } from 'react-icons/bs';
-import Form from './components/Form';
 
 function App() {
 	let items = [
@@ -20,15 +20,13 @@ function App() {
 		console.log(item);
 	};
 
-	const handleSubmitButtonClick = (item: string) => {
-		console.log(item.target.innerText);
-	};
+	const handleSubmitButtonClick = () => {};
 
 	const [showAlert, setShowAlert] = useState(false);
-	const handleShowAlertClick = (item: string) => {
+	const handleShowAlertClick = () => {
 		setShowAlert(!showAlert);
 	};
-	const handleAlertDismissedClick = (item: string) => {
+	const handleAlertDismissedClick = () => {
 		setShowAlert(!showAlert);
 	};
 
@@ -39,8 +37,8 @@ function App() {
 		<>
 			{showAlert && (
 				<Alert
+					onClose={handleAlertDismissedClick}
 					text='Hola Mundo'
-					onClick={handleAlertDismissedClick}
 				></Alert>
 			)}
 			<ListGroup
@@ -53,13 +51,11 @@ function App() {
 				color='red'
 			></BsFillCalendarFill>
 			<Button
-				className='mx-2'
 				text={'Save'}
 				typeColor='primary'
 				onClick={handleSubmitButtonClick}
 			></Button>
 			<Button
-				className='mx-2'
 				text={'Alert'}
 				typeColor='secondary'
 				onClick={handleShowAlertClick}
@@ -68,14 +64,9 @@ function App() {
 
 			<Message></Message>
 
-			<ExpandableText
-				text={loremText}
-				onTextCutOff={() => {
-					console.log(text);
-				}}
-			></ExpandableText>
+			<ExpandableText text={loremText}></ExpandableText>
 
-			<Form></Form>
+			<FormUseRef></FormUseRef>
 		</>
 	);
 }
