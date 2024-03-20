@@ -2,6 +2,7 @@ import Alert from '@/components/Alert.tsx';
 import Button from '@/components/Button.tsx';
 import ExpandableText from '@/components/ExpandableText.tsx';
 import FormUseRef from '@/components/FormUseRef';
+import FormUseState from '@/components/FormUseState';
 import Like from '@/components/Like.tsx';
 import ListGroup from '@/components/ListGroup';
 import Message from '@/components/Message.tsx';
@@ -67,6 +68,8 @@ function App() {
 			<ExpandableText text={loremText}></ExpandableText>
 
 			<FormUseRef></FormUseRef>
+
+			<FormUseState></FormUseState>
 		</>
 	);
 }
