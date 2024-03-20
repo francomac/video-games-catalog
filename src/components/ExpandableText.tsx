@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 interface Props {
 	text: string;
-	quantity?: number;
+	maxChars?: number;
 }
 
-const ExpandableText = ({ text, quantity = 50 }: Props) => {
+const ExpandableText = ({ text, maxChars = 50 }: Props) => {
 	const [showMore, setShowMore] = useState(false);
 
 	const onTextCutOff = () => {
@@ -18,7 +18,7 @@ const ExpandableText = ({ text, quantity = 50 }: Props) => {
 			{showMore ? (
 				<div>{text}</div>
 			) : (
-				<div>{text.substring(0, quantity)}</div>
+				<div>{text.substring(0, maxChars)}</div>
 			)}
 			<Button
 				className='mx-2'
