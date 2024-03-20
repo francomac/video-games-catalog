@@ -2,6 +2,7 @@ import Alert from '@/components/Alert.tsx';
 import Button from '@/components/Button.tsx';
 import Like from '@/components/Like.tsx';
 import ListGroup from '@/components/ListGroup';
+import Message from '@/components/Message.tsx';
 import { useState } from 'react';
 import { BsFillCalendarFill } from 'react-icons/bs';
 
@@ -59,6 +60,8 @@ function App() {
 				onClick={handleShowAlertClick}
 			></Button>
 			<Like onClick={() => console.log('clicked')}></Like>
+
+			<Message></Message>
 		</>
 	);
 }
