@@ -6,6 +6,7 @@ import ListGroup from '@/components/ListGroup';
 import Message from '@/components/Message.tsx';
 import { useState } from 'react';
 import { BsFillCalendarFill } from 'react-icons/bs';
+import Form from './components/Form';
 
 function App() {
 	let items = [
@@ -73,6 +74,8 @@ function App() {
 					console.log(text);
 				}}
 			></ExpandableText>
+
+			<Form></Form>
 		</>
 	);
 }
