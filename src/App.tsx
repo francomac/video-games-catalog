@@ -1,6 +1,7 @@
 import Alert from '@/components/Alert.tsx';
 import Button from '@/components/Button.tsx';
 import ExpandableText from '@/components/ExpandableText.tsx';
+import FormUseFormHook from '@/components/FormUseFormHook';
 import FormUseRef from '@/components/FormUseRef';
 import FormUseState from '@/components/FormUseState';
 import Like from '@/components/Like.tsx';
@@ -70,6 +71,8 @@ function App() {
 			<FormUseRef></FormUseRef>
 
 			<FormUseState></FormUseState>
+
+			<FormUseFormHook></FormUseFormHook>
 		</>
 	);
 }
