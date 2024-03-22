@@ -75,6 +75,7 @@ function App() {
 
 			<FormUseFormHook></FormUseFormHook>
 
+			<h1 className='my-5'>Expenses Tracker App</h1>
 			<ExpensesTracker></ExpensesTracker>
 		</>
 	);
