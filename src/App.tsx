@@ -1,13 +1,13 @@
 import Alert from '@/components/Alert.tsx';
 import Button from '@/components/Button.tsx';
 import ExpandableText from '@/components/ExpandableText.tsx';
-import ExpensesTracker from '@/components/ExpensesTracker';
 import FormUseFormHook from '@/components/FormUseFormHook';
 import FormUseRef from '@/components/FormUseRef';
 import FormUseState from '@/components/FormUseState';
 import Like from '@/components/Like.tsx';
 import ListGroup from '@/components/ListGroup';
 import Message from '@/components/Message.tsx';
+import ExpensesTracker from '@/expense-tracker/components/ExpensesTracker';
 import { useState } from 'react';
 import { BsFillCalendarFill } from 'react-icons/bs';
 
