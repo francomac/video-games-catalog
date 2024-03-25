@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ExpenseFilter from './ExpenseFilter';
 import Form from './ExpenseForm';
 import ExpenseList from './ExpenseList';
 
@@ -28,6 +29,24 @@ const ExpensesTracker = () => {
 			amount: 10,
 			category: 'utilities',
 		},
+		{
+			id: 5,
+			description: 'test5',
+			amount: 10,
+			category: 'entertainment',
+		},
+		{
+			id: 6,
+			description: 'test6',
+			amount: 10,
+			category: 'groceries',
+		},
+		{
+			id: 7,
+			description: 'test7',
+			amount: 10,
+			category: 'groceries',
+		},
 	]);
 
 	const onDeleteExpenseClicked = (id: number) => {
@@ -36,11 +55,24 @@ const ExpensesTracker = () => {
 		);
 	};
 
+	const [selectedCategory, setSelectedCategory] =
+		useState('');
+	const filteredExpenses = selectedCategory
+		? expenses.filter(
+				(expense) => expense.category === selectedCategory,
+			)
+		: expenses;
+
 	return (
 		<div className='container p-20'>
 			<Form></Form>
+			<div className='mb-3'>
+				<ExpenseFilter
+					onSelectCategories={(e) => setSelectedCategory(e)}
+				></ExpenseFilter>
+			</div>
 			<ExpenseList
-				expenses={expenses}
+				expenses={filteredExpenses}
 				onDelete={onDeleteExpenseClicked}
 			></ExpenseList>
 		</div>
