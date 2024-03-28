@@ -1,34 +1,28 @@
-import { useState } from 'react';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+
+import { categories } from './ExpensesTracker';
 
 interface FormData {
 	description: string;
 	amount: number;
+	category: string;
+}
+interface FormProps {
+	onSubmit: (data: FormData) => void;
 }
 
-const ExpenseForm = () => {
-	const [expenses, setExpenses] = useState<FormData[]>([]);
-	const [expense, setExpense] = useState<FormData>({
-		description: '',
-		amount: 0,
-	});
-
+const ExpenseForm = ({ onSubmit }: FormProps) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors, isValid },
 	} = useForm<FormData>();
 
-	const onSubmit = (data: FieldValues) => {
-		console.log(data);
-		console.log(errors);
-		setExpenses({ ...expenses, data });
-	};
-
 	return (
 		<div className='w-50 mt-3'>
 			<h2>{'Form using useForm Hook'}</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				{/* description */}
 				<div className='mb-3'>
 					<label
 						htmlFor='description'
@@ -56,7 +50,7 @@ const ExpenseForm = () => {
 						</p>
 					)}
 				</div>
-
+				{/* amount */}
 				<div className='mb-3'>
 					<label htmlFor='amount' className='form-label'>
 						Amount
@@ -67,6 +61,26 @@ const ExpenseForm = () => {
 						className='form-control'
 						{...register('amount')}
 					/>
+				</div>
+				{/* category */}
+				<div className='mb-3'>
+					<label htmlFor='category' className='forl-label'>
+						Category
+					</label>
+					<select
+						className='form-select'
+						{...register('category')}
+					>
+						<option value=''></option>
+						{categories.map((category) => (
+							<option
+								key={category.value}
+								value={category.value}
+							>
+								{category.label}
+							</option>
+						))}
+					</select>
 				</div>
 
 				<button
