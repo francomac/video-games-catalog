@@ -1,12 +1,12 @@
 interface Expense {
-	id: number;
+	id?: string;
 	description: string;
 	amount: number;
 	category: string;
 }
 interface Props {
 	expenses: Expense[];
-	onDelete: (id: number) => void;
+	onDelete: (id: string) => void;
 }
 
 const ExpenseList = ({ expenses, onDelete }: Props) => {
@@ -33,7 +33,9 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
 									<button
 										type='button'
 										className='btn btn-outline-danger'
-										onClick={() => onDelete(expense.id)}
+										onClick={() =>
+											onDelete(expense.id || '')
+										}
 									>
 										Delete
 									</button>
@@ -46,12 +48,14 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
 					<tr>
 						<td>
 							$
-							{expenses
-								.reduce(
-									(acc, expense) => expense.amount + acc,
-									0,
-								)
-								.toFixed(2)}
+							{parseFloat(
+								'' +
+									expenses.reduce(
+										(acc, expense) =>
+											parseFloat('' + expense.amount) + acc,
+										0,
+									),
+							).toFixed(2)}
 						</td>
 						<td></td>
 						<td></td>
