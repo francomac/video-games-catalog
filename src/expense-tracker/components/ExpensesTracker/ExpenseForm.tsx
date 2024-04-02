@@ -15,13 +15,19 @@ const ExpenseForm = ({ onSubmit }: FormProps) => {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors, isValid },
 	} = useForm<FormData>();
 
 	return (
 		<div className='w-50 mt-3'>
 			<h2>{'Form using useForm Hook'}</h2>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form
+				onSubmit={handleSubmit((data) => {
+					onSubmit(data);
+					reset();
+				})}
+			>
 				{/* description */}
 				<div className='mb-3'>
 					<label
