@@ -1,5 +1,6 @@
-import ProductList from '@/components/ProductList.tsx';
+import ProductList from '@/components/HooksAndFetchData/ProductList';
 import { useEffect, useRef, useState } from 'react';
+import EffectCleanApp from './EffectCleanApp';
 
 const DbRefs = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -35,6 +36,8 @@ const DbRefs = () => {
 			</select>
 
 			<ProductList category={category}></ProductList>
+
+			<EffectCleanApp></EffectCleanApp>
 		</div>
 	);
 };
