@@ -1,5 +1,5 @@
 import ProductList from '@/components/ProductList.tsx';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const DbRefs = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -13,15 +13,28 @@ const DbRefs = () => {
 		document.title = 'Use Effect';
 	});
 
+	const [category, setCategory] = useState('');
+
 	return (
 		<div>
 			<input
 				ref={inputRef}
 				type='text'
-				className='form-control'
+				className='form-control mb-3'
 			/>
 
-			<ProductList></ProductList>
+			<select
+				className='form-select mb-3'
+				onChange={(event) => {
+					setCategory(event.target.value);
+				}}
+			>
+				<option value=''></option>
+				<option value='option 1'>Option 1</option>
+				<option value='option 2'>Option 2</option>
+			</select>
+
+			<ProductList category={category}></ProductList>
 		</div>
 	);
 };
