@@ -7,6 +7,7 @@ import FormUseState from '@/components/FormUseState';
 import Like from '@/components/Like.tsx';
 import ListGroup from '@/components/ListGroup';
 import Message from '@/components/Message.tsx';
+import DbRefs from '@/components/backendRefs/DbRefs.tsx';
 import ExpensesTracker from '@/expense-tracker/components/ExpensesTracker';
 import { useState } from 'react';
 import { BsFillCalendarFill } from 'react-icons/bs';
@@ -77,6 +78,9 @@ function App() {
 
 			<h1 className='my-5'>Expenses Tracker App</h1>
 			<ExpensesTracker></ExpensesTracker>
+
+			<h1 className='my-5'>Expenses Tracker App</h1>
+			<DbRefs></DbRefs>
 		</>
 	);
 }
