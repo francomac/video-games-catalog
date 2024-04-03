@@ -1,6 +1,9 @@
+import AsyncAwait from '@/components/HooksAndFetchData/AsyncAwait';
+import CancellingFetchData from '@/components/HooksAndFetchData/CancellingFetchData';
 import EffectCleanApp from '@/components/HooksAndFetchData/EffectCleanApp';
 import FetchData from '@/components/HooksAndFetchData/FetchData';
 import ProductList from '@/components/HooksAndFetchData/ProductList';
+import ShowingLoadingIndicator from '@/components/HooksAndFetchData/ShowingLoadingIndicator';
 import { useEffect, useRef, useState } from 'react';
 
 const HooksAndFetchData = () => {
@@ -44,6 +47,15 @@ const HooksAndFetchData = () => {
 
 			<h2 className=' mt-3'>Fetch Data</h2>
 			<FetchData></FetchData>
+
+			<h2 className=' mt-3'>Async Await Fetch Data</h2>
+			<AsyncAwait></AsyncAwait>
+
+			<h2 className=' mt-3'>Cancelling Fetch Data</h2>
+			<CancellingFetchData></CancellingFetchData>
+
+			<h2 className=' mt-3'>Showing Loading Indicator</h2>
+			<ShowingLoadingIndicator></ShowingLoadingIndicator>
 		</div>
 	);
 };
