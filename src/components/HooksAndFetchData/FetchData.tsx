@@ -27,17 +27,6 @@ const FetchData = () => {
 			});
 
 		return () => controller.abort();
-		// const fetchUsers = async () => {
-		// 	try {
-		// 		const res = await axios.get<User[]>(
-		// 			'https://jsonplaceholder.typicode.com/users',
-		// 		);
-		// 		setUsers(res.data);
-		// 	} catch (error) {
-		// 		setError((error as AxiosError).message);
-		// 	}
-		// };
-		// fetchUsers();
 	}, []);
 
 	return (
