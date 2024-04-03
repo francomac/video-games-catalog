@@ -4,7 +4,7 @@ import ExpandableText from '@/components/ExpandableText.tsx';
 import FormUseFormHook from '@/components/FormUseFormHook';
 import FormUseRef from '@/components/FormUseRef';
 import FormUseState from '@/components/FormUseState';
-import DbRefs from '@/components/HooksAndFetchData';
+import HooksAndFetchData from '@/components/HooksAndFetchData';
 import Like from '@/components/Like.tsx';
 import ListGroup from '@/components/ListGroup';
 import Message from '@/components/Message.tsx';
@@ -79,8 +79,8 @@ function App() {
 			<h1 className='my-5'>Expenses Tracker App</h1>
 			<ExpensesTracker></ExpensesTracker>
 
-			<h1 className='my-5'>Expenses Tracker App</h1>
-			<DbRefs></DbRefs>
+			<h1 className='my-5'>Hooks and Data Fetching</h1>
+			<HooksAndFetchData></HooksAndFetchData>
 		</>
 	);
 }

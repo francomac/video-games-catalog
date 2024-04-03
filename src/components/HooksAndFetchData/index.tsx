@@ -1,8 +1,9 @@
+import EffectCleanApp from '@/components/HooksAndFetchData/EffectCleanApp';
+import FetchData from '@/components/HooksAndFetchData/FetchData';
 import ProductList from '@/components/HooksAndFetchData/ProductList';
 import { useEffect, useRef, useState } from 'react';
-import EffectCleanApp from './EffectCleanApp';
 
-const DbRefs = () => {
+const HooksAndFetchData = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	// after render
@@ -18,6 +19,7 @@ const DbRefs = () => {
 
 	return (
 		<div>
+			<h2>Use Effect / hook</h2>
 			<input
 				ref={inputRef}
 				type='text'
@@ -37,9 +39,13 @@ const DbRefs = () => {
 
 			<ProductList category={category}></ProductList>
 
+			<h2 className=' mt-3'>Effect Clean App</h2>
 			<EffectCleanApp></EffectCleanApp>
+
+			<h2 className=' mt-3'>Fetch Data</h2>
+			<FetchData></FetchData>
 		</div>
 	);
 };
 
-export default DbRefs;
+export default HooksAndFetchData;
