@@ -6,6 +6,7 @@ import EffectCleanApp from '@/components/HooksAndFetchData/EffectCleanApp';
 import FetchData from '@/components/HooksAndFetchData/FetchData';
 import ProductList from '@/components/HooksAndFetchData/ProductList';
 import ShowingLoadingIndicator from '@/components/HooksAndFetchData/ShowingLoadingIndicator';
+import UpdatingData from '@/components/HooksAndFetchData/UpdatingData';
 import { useEffect, useRef, useState } from 'react';
 
 const HooksAndFetchData = () => {
@@ -64,6 +65,9 @@ const HooksAndFetchData = () => {
 
 			<h2 className=' mt-3'>Showing Loading Indicator</h2>
 			<AddingData></AddingData>
+
+			<h2 className=' mt-3'>Showing Loading Indicator</h2>
+			<UpdatingData></UpdatingData>
 		</div>
 	);
 };
