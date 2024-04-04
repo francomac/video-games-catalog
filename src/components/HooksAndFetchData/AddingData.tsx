@@ -1,4 +1,6 @@
-import axios, { CanceledError } from 'axios';
+import apiClient, {
+	CanceledError,
+} from '@/services/api-client';
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -16,10 +18,8 @@ const AddingData = () => {
 
 		setLoading(true);
 		// get -> promise -> res / err
-		axios
-			.get<User[]>(
-				'https://jsonplaceholder.typicode.com/users',
-			)
+		apiClient
+			.get<User[]>('/users')
 			.then((res) => {
 				setUsers(res.data);
 				setLoading(false);
@@ -41,11 +41,8 @@ const AddingData = () => {
 
 		setUsers([newUser, ...users]);
 
-		axios
-			.post(
-				'https://jsonplaceholder.typicode.com/users/',
-				newUser,
-			)
+		apiClient
+			.post('/users/', newUser)
 			.then(({ data: savedUser }) => {
 				setUsers([savedUser, ...users]);
 			})

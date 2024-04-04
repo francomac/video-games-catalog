@@ -60,13 +60,13 @@ const HooksAndFetchData = () => {
 			<h2 className=' mt-3'>Showing Loading Indicator</h2>
 			<ShowingLoadingIndicator></ShowingLoadingIndicator>
 
-			<h2 className=' mt-3'>Showing Loading Indicator</h2>
+			<h2 className=' mt-3'>Deleting Loading Indicator</h2>
 			<DeletingData></DeletingData>
 
-			<h2 className=' mt-3'>Showing Loading Indicator</h2>
+			<h2 className=' mt-3'>Adding Loading Indicator</h2>
 			<AddingData></AddingData>
 
-			<h2 className=' mt-3'>Showing Loading Indicator</h2>
+			<h2 className=' mt-3'>Updating Loading Indicator</h2>
 			<UpdatingData></UpdatingData>
 		</div>
 	);

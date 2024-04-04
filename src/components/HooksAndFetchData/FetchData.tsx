@@ -1,4 +1,6 @@
-import axios, { CanceledError } from 'axios';
+import apiClient, {
+	CanceledError,
+} from '@/services/api-client';
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -14,11 +16,8 @@ const FetchData = () => {
 		const controller = new AbortController();
 
 		// get -> promise -> res / err
-		axios
-			.get<User[]>(
-				'https://jsonplaceholder.typicode.com/users',
-				{ signal: controller.signal },
-			)
+		apiClient
+			.get<User[]>('/users', { signal: controller.signal })
 			.then((res) => setUsers(res.data))
 			.catch((err) => {
 				if (err instanceof CanceledError) return;
