@@ -6,7 +6,7 @@ interface User {
 	id: string;
 }
 
-const DeletingData = () => {
+const AddingData = () => {
 	const [users, setUsers] = useState<User[]>([]);
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -35,25 +35,36 @@ const DeletingData = () => {
 		return () => controller.abort();
 	}, []);
 
-	const deleteUser = (user: User) => {
+	const addUser = () => {
 		const originalUsers = [...users];
+		const newUser = { id: '0', name: 'franco' };
 
-		setUsers(users.filter((u) => u.id !== user.id));
+		setUsers([newUser, ...users]);
 
 		axios
-			.delete(
-				'https://jsonplaceholder.typicode.com/users/' +
-					user.id,
+			.post(
+				'https://jsonplaceholder.typicode.com/users/',
+				newUser,
 			)
+			.then(({ data: savedUser }) => {
+				setUsers([savedUser, ...users]);
+			})
 			.catch((err) => {
 				setError(err.message);
 				setUsers(originalUsers);
 			});
 	};
+
 	return (
 		<>
 			{error && <p className='text-danger'>{error}</p>}
 			{loading && <div className='spinner-border'></div>}
+			<button
+				className='btn btn-primary mb-3'
+				onClick={addUser}
+			>
+				Add
+			</button>
 			<ul className='list-group'>
 				{users.map((user) => (
 					<li
@@ -61,12 +72,6 @@ const DeletingData = () => {
 						className='list-group-item d-flex justify-content-between'
 					>
 						{user.name}
-						<button
-							className='btn btn-outline-danger'
-							onClick={() => deleteUser(user)}
-						>
-							Delete
-						</button>
 					</li>
 				))}
 			</ul>
@@ -74,4 +79,4 @@ const DeletingData = () => {
 	);
 };
 
-export default DeletingData;
+export default AddingData;

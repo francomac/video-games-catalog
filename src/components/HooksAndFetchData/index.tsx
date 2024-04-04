@@ -1,3 +1,4 @@
+import AddingData from '@/components/HooksAndFetchData/AddingData';
 import AsyncAwait from '@/components/HooksAndFetchData/AsyncAwait';
 import CancellingFetchData from '@/components/HooksAndFetchData/CancellingFetchData';
 import DeletingData from '@/components/HooksAndFetchData/DeletingData';
@@ -60,6 +61,9 @@ const HooksAndFetchData = () => {
 
 			<h2 className=' mt-3'>Showing Loading Indicator</h2>
 			<DeletingData></DeletingData>
+
+			<h2 className=' mt-3'>Showing Loading Indicator</h2>
+			<AddingData></AddingData>
 		</div>
 	);
 };
