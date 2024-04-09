@@ -1,6 +1,4 @@
-import apiClient, {
-	CanceledError,
-} from '@/services/api-client';
+import { CanceledError } from '@/services/api-client';
 import userService from '@/services/userService';
 import { useEffect, useState } from 'react';
 
@@ -19,8 +17,9 @@ const DeletingData = () => {
 
 		setLoading(true);
 		// get -> promise -> res / err
-		apiClient
-			.get<User[]>('/users')
+		const { request, cancel } = userService.getAllUSers();
+
+		request
 			.then((res) => {
 				setUsers(res.data);
 				setLoading(false);
@@ -33,7 +32,7 @@ const DeletingData = () => {
 				setLoading(false);
 			});
 
-		return () => controller.abort();
+		return () => cancel();
 	}, []);
 
 	const deleteUser = (user: User) => {

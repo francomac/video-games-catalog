@@ -1,6 +1,5 @@
-import apiClient, {
-	CanceledError,
-} from '@/services/api-client';
+import { CanceledError } from '@/services/api-client';
+import userService from '@/services/userService';
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -13,14 +12,9 @@ const CancellingFetchData = () => {
 	const [error, setError] = useState('');
 
 	useEffect(() => {
-		const controller = new AbortController();
+		const { request, cancel } = userService.getAllUSers();
 
-		// get -> promise -> res / err
-		apiClient
-			.get<User[]>(
-				'https://jsonplaceholder.typicode.com/users',
-				{ signal: controller.signal },
-			)
+		request
 			.then((res) => setUsers(res.data))
 			.catch((err) => {
 				if (err instanceof CanceledError) return;
@@ -28,7 +22,7 @@ const CancellingFetchData = () => {
 				setError(err.message);
 			});
 
-		return () => controller.abort();
+		return () => cancel();
 	}, []);
 
 	return (
