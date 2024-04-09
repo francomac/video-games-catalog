@@ -12,7 +12,7 @@ const CancellingFetchData = () => {
 	const [error, setError] = useState('');
 
 	useEffect(() => {
-		const { request, cancel } = userService.getAllUSers();
+		const { request, cancel } = userService.getAll<User>();
 
 		request
 			.then((res) => setUsers(res.data))
