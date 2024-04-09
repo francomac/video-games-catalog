@@ -1,6 +1,7 @@
 import apiClient, {
 	CanceledError,
 } from '@/services/api-client';
+import userService from '@/services/userService';
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -40,7 +41,7 @@ const DeletingData = () => {
 
 		setUsers(users.filter((u) => u.id !== user.id));
 
-		apiClient.delete('/users/' + user.id).catch((err) => {
+		userService.deleteUser(user.id).catch((err) => {
 			setError(err.message);
 			setUsers(originalUsers);
 		});
