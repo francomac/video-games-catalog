@@ -17,7 +17,7 @@ const DeletingData = () => {
 
 		setLoading(true);
 		// get -> promise -> res / err
-		const { request, cancel } = userService.getAllUSers();
+		const { request, cancel } = userService.getAll<User>();
 
 		request
 			.then((res) => {
@@ -40,7 +40,7 @@ const DeletingData = () => {
 
 		setUsers(users.filter((u) => u.id !== user.id));
 
-		userService.deleteUser(user.id).catch((err) => {
+		userService.delete(user.id).catch((err) => {
 			setError(err.message);
 			setUsers(originalUsers);
 		});
