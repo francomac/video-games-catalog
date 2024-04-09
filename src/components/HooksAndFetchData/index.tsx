@@ -3,6 +3,7 @@ import AsyncAwait from '@/components/HooksAndFetchData/AsyncAwait';
 import CancellingFetchData from '@/components/HooksAndFetchData/CancellingFetchData';
 import DeletingData from '@/components/HooksAndFetchData/DeletingData';
 import EffectCleanApp from '@/components/HooksAndFetchData/EffectCleanApp';
+import ExtractingUserService from '@/components/HooksAndFetchData/ExtractingUserService';
 import FetchData from '@/components/HooksAndFetchData/FetchData';
 import ProductList from '@/components/HooksAndFetchData/ProductList';
 import ShowingLoadingIndicator from '@/components/HooksAndFetchData/ShowingLoadingIndicator';
@@ -68,6 +69,9 @@ const HooksAndFetchData = () => {
 
 			<h2 className=' mt-3'>Updating Loading Indicator</h2>
 			<UpdatingData></UpdatingData>
+
+			<h2 className=' mt-3'>Extracting User Service</h2>
+			<ExtractingUserService></ExtractingUserService>
 		</div>
 	);
 };
