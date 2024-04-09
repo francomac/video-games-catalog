@@ -13,11 +13,9 @@ const AddingData = () => {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		const controller = new AbortController();
-
 		setLoading(true);
 
-		const { request, cancel } = userService.getAllUSers();
+		const { request, cancel } = userService.getAll<User>();
 
 		request
 			.then((res) => {
@@ -42,7 +40,7 @@ const AddingData = () => {
 		setUsers([newUser, ...users]);
 
 		userService
-			.createUser(newUser)
+			.create<User>(newUser)
 			.then(({ data: savedUser }) => {
 				setUsers([savedUser, ...users]);
 			})
@@ -61,7 +59,7 @@ const AddingData = () => {
 			),
 		);
 
-		userService.updateUser(updatedUser).catch((err) => {
+		userService.update<User>(updatedUser).catch((err) => {
 			setError(err.message);
 			setUsers(originalUsers);
 		});
