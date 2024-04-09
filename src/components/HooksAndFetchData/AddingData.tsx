@@ -10,7 +10,7 @@ const AddingData = () => {
 	useEffect(() => {
 		setLoading(true);
 
-		const { request, cancel } = userService.getAllUSers();
+		const { request, cancel } = userService.getAll<User>();
 
 		request
 			.then((res) => {
@@ -35,7 +35,7 @@ const AddingData = () => {
 		setUsers([newUser, ...users]);
 
 		userService
-			.createUser(newUser)
+			.create<User>(newUser)
 			.then(({ data: savedUser }) => {
 				setUsers([savedUser, ...users]);
 			})
