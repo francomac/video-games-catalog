@@ -1,33 +1,35 @@
-import apiClient from './api-client';
+import create from './http-service';
 
 export interface User {
 	name: string;
 	id: string;
 }
 
-class UserService {
-	getAllUSers() {
-		const controller = new AbortController();
+// class UserService {
+// 	getAllUSers() {
+// 		const controller = new AbortController();
 
-		const request = apiClient.get<User[]>(
-			'https://jsonplaceholder.typicode.com/users',
-			{ signal: controller.signal },
-		);
+// 		const request = apiClient.get<User[]>(
+// 			'https://jsonplaceholder.typicode.com/users',
+// 			{ signal: controller.signal },
+// 		);
 
-		return { request, cancel: () => controller.abort() };
-	}
+// 		return { request, cancel: () => controller.abort() };
+// 	}
 
-	deleteUser(id: string) {
-		return apiClient.delete('/users/' + id);
-	}
+// 	deleteUser(id: string) {
+// 		return apiClient.delete('/users/' + id);
+// 	}
 
-	createUser(user: User) {
-		return apiClient.post('/users/', user);
-	}
+// 	createUser(user: User) {
+// 		return apiClient.post('/users/', user);
+// 	}
 
-	updateUser(user: User) {
-		return apiClient.patch('/users/' + user.id, user);
-	}
-}
+// 	updateUser(user: User) {
+// 		return apiClient.patch('/users/' + user.id, user);
+// 	}
+// }
 
-export default new UserService();
+// export default new UserService();
+
+export default create('/users');
