@@ -1,6 +1,5 @@
-import apiClient, {
-	CanceledError,
-} from '@/services/api-client';
+import { CanceledError } from '@/services/api-client';
+import userService from '@/services/userService';
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -17,9 +16,10 @@ const AddingData = () => {
 		const controller = new AbortController();
 
 		setLoading(true);
-		// get -> promise -> res / err
-		apiClient
-			.get<User[]>('/users')
+
+		const { request, cancel } = userService.getAllUSers();
+
+		request
 			.then((res) => {
 				setUsers(res.data);
 				setLoading(false);
@@ -32,7 +32,7 @@ const AddingData = () => {
 				setLoading(false);
 			});
 
-		return () => controller.abort();
+		return () => cancel();
 	}, []);
 
 	const addUser = () => {
@@ -41,8 +41,8 @@ const AddingData = () => {
 
 		setUsers([newUser, ...users]);
 
-		apiClient
-			.post('/users/', newUser)
+		userService
+			.createUser(newUser)
 			.then(({ data: savedUser }) => {
 				setUsers([savedUser, ...users]);
 			})
@@ -61,12 +61,10 @@ const AddingData = () => {
 			),
 		);
 
-		apiClient
-			.patch('/users/' + user.id, updatedUser)
-			.catch((err) => {
-				setError(err.message);
-				setUsers(originalUsers);
-			});
+		userService.updateUser(updatedUser).catch((err) => {
+			setError(err.message);
+			setUsers(originalUsers);
+		});
 	};
 
 	return (
