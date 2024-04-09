@@ -1,32 +1,33 @@
-import { CanceledError } from '@/services/api-client';
+import useUsers from '@/hooks/useUsers';
 import userService, { User } from '@/services/userService';
-import { useEffect, useState } from 'react';
 
 const AddingData = () => {
-	const [users, setUsers] = useState<User[]>([]);
-	const [error, setError] = useState('');
-	const [loading, setLoading] = useState(false);
+	const { users, error, loading, setUsers, setError } =
+		useUsers();
+	// const [users, setUsers] = useState<User[]>([]);
+	// const [error, setError] = useState('');
+	// const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
-		setLoading(true);
+	// useEffect(() => {
+	// 	setLoading(true);
 
-		const { request, cancel } = userService.getAll<User>();
+	// 	const { request, cancel } = userService.getAll<User>();
 
-		request
-			.then((res) => {
-				setUsers(res.data);
-				setLoading(false);
-			})
-			.catch((err) => {
-				if (err instanceof CanceledError) return;
-				setError(err.message);
-			})
-			.finally(() => {
-				setLoading(false);
-			});
+	// 	request
+	// 		.then((res) => {
+	// 			setUsers(res.data);
+	// 			setLoading(false);
+	// 		})
+	// 		.catch((err) => {
+	// 			if (err instanceof CanceledError) return;
+	// 			setError(err.message);
+	// 		})
+	// 		.finally(() => {
+	// 			setLoading(false);
+	// 		});
 
-		return () => cancel();
-	}, []);
+	// 	return () => cancel();
+	// }, []);
 
 	const addUser = () => {
 		const originalUsers = [...users];
