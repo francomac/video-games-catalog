@@ -1,6 +1,4 @@
-import apiClient, {
-	CanceledError,
-} from '@/services/api-client';
+import { CanceledError } from '@/services/api-client';
 import userService, { User } from '@/services/userService';
 import { useEffect, useState } from 'react';
 
@@ -36,8 +34,8 @@ const AddingData = () => {
 
 		setUsers([newUser, ...users]);
 
-		apiClient
-			.post('/users/', newUser)
+		userService
+			.createUser(newUser)
 			.then(({ data: savedUser }) => {
 				setUsers([savedUser, ...users]);
 			})
