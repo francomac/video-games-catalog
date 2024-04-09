@@ -1,12 +1,8 @@
 import apiClient, {
 	CanceledError,
 } from '@/services/api-client';
+import userService, { User } from '@/services/userService';
 import { useEffect, useState } from 'react';
-
-interface User {
-	name: string;
-	id: string;
-}
 
 const AddingData = () => {
 	const [users, setUsers] = useState<User[]>([]);
@@ -14,12 +10,11 @@ const AddingData = () => {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		const controller = new AbortController();
-
 		setLoading(true);
-		// get -> promise -> res / err
-		apiClient
-			.get<User[]>('/users')
+
+		const { request, cancel } = userService.getAllUSers();
+
+		request
 			.then((res) => {
 				setUsers(res.data);
 				setLoading(false);
@@ -32,7 +27,7 @@ const AddingData = () => {
 				setLoading(false);
 			});
 
-		return () => controller.abort();
+		return () => cancel();
 	}, []);
 
 	const addUser = () => {
